@@ -1,4 +1,4 @@
-package com.okellomwaka.gettingstartedwithretrofit;
+package com.okellomwaka.gettingstartedwithretrofit.api.model;
 
 public class GitHubRepo {
     private int id;

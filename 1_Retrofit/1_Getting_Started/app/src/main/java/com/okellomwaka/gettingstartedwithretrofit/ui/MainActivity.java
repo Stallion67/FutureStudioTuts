@@ -1,10 +1,16 @@
-package com.okellomwaka.gettingstartedwithretrofit;
+package com.okellomwaka.gettingstartedwithretrofit.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.okellomwaka.gettingstartedwithretrofit.api.ServiceGenerator;
+import com.okellomwaka.gettingstartedwithretrofit.ui.adapter.GitHubRepoAdapter;
+import com.okellomwaka.gettingstartedwithretrofit.R;
+import com.okellomwaka.gettingstartedwithretrofit.api.model.GitHubRepo;
+import com.okellomwaka.gettingstartedwithretrofit.api.service.GitHubClient;
 
 import java.util.List;
 
@@ -25,13 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView listView = findViewById(R.id.repositoryList);
 
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create());
 
-        Retrofit retrofit = builder.build();
-
-        GitHubClient client = retrofit.create(GitHubClient.class);
+        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
 
         Call<List<GitHubRepo>> call = client.reposForUser("Stallion67");
 
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                              List<GitHubRepo> repo = response.body();
 
                              //Attaching the tlist view
-                             listView.setAdapter(new GitHubRepoAdapter(MainActivity.this,repo));
+                             listView.setAdapter(new GitHubRepoAdapter(MainActivity.this, repo));
                          }
 
                          @Override

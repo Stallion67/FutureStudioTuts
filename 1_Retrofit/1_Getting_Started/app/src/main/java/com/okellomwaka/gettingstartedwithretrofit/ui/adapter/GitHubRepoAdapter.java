@@ -1,12 +1,14 @@
-package com.okellomwaka.gettingstartedwithretrofit;
+package com.okellomwaka.gettingstartedwithretrofit.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.okellomwaka.gettingstartedwithretrofit.R;
+import com.okellomwaka.gettingstartedwithretrofit.api.model.GitHubRepo;
 
 import java.util.List;
 
